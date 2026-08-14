@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>JIRA QA Checklist Alert</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 10px 14px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color: #172b4d;
+      width: max-content;
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap;
+    }
+    .title {
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .status-text {
+      font-size: 12px;
+      margin-left: 2px;
+    }
+    .status-text.enabled { color: #36B37E; }
+    .status-text.disabled { color: #8993A4; }
+
+    /* Toggle switch */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 36px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #ccc;
+      transition: 0.2s;
+      border-radius: 20px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 14px;
+      width: 14px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.2s;
+      border-radius: 50%;
+    }
+    input:checked + .slider { background-color: #36B37E; }
+    input:checked + .slider:before { transform: translateX(16px); }
+  </style>
+</head>
+<body>
+  <div class="row" title="When enabled, checks JIRA tickets in Production QA / Final QA status for the required Production QA Checklist File and Athena Report URL fields.">
+    <span class="title">JIRA QA Alert</span>
+    <label class="switch">
+      <input type="checkbox" id="enableToggle" />
+      <span class="slider"></span>
+    </label>
+    <span id="statusText" class="status-text enabled">Enabled</span>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
